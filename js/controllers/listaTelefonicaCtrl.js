@@ -1,17 +1,17 @@
-angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope, $filter, $http){
+angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope, $filter, $http, contatosAPI){
     $scope.app = "Lista Telefonica";
     $scope.contatos = [];
 
     // Carregando os dados de uma api via GET
     let carregarContatos = function(){
-        $http.get("http://localhost:3000/contatos").then( (data) => {
+       contatosAPI.getContatos().then( (data) => {
             $scope.contatos = data.data;
            //console.log($scope.contatos);
         })
     }
 
     let carregarOperadoras = function(){
-        $http.get("http://localhost:3000/operadoras").then( (data) => {
+        contatosAPI.getOperadoras().then( (data) => {
             $scope.operadoras = data.data;
         });
     }
@@ -27,7 +27,7 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($sc
     $scope.classe = 'selecionado'
 
     $scope.adicionarContato =  (contato) => {
-        $http.post("http://localhost:3000/contatos", contato).then(function(data){
+        contatosAPI.saveContato(contato).then(function(data){
             delete $scope.contato;
             $scope.contatoForm.$setPristine(); // retirar mensagem de error, após refesh do DOM
             carregarContatos();
