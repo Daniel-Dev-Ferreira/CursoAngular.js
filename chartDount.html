@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+<meta charset=utf-8 />
+<title>Morris.js Donut Chart Example</title>
+
+<style>
+
+body{
+  color: #CFD8DC;
+}
+
+.morris-donut-inverse{
+  svg{
+    text[fill="#000000"]{
+      fill: #CFD8DC;
+    }
+    path[stroke="#ffffff"]{
+      stroke: #263238;
+    }
+  }
+}
+</style>
+</head>
+<body>
+  <div id="donut-example" class="morris-donut-inverse"></div>
+</body>
+
+<script>
+    
+    var colorDanger = "#FF1744";
+    Morris.Donut({
+      element: 'donut-example',
+      resize: true,
+      colors: [
+        '#E0F7FA',
+        '#B2EBF2',
+        '#80DEEA',
+        '#4DD0E1',
+      ],
+      //labelColor:"#cccccc", // text color
+      //backgroundColor: '#333333', // border color
+      data: [
+        {label:"Dato Ej.1", value:123, color:colorDanger},
+        {label:"Dato Ej.2", value:350},
+        {label:"Dato Ej.3", value:246},
+    
+      ]
+    });
+    </script>
+</html>
